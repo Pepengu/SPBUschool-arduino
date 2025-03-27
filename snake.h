@@ -18,7 +18,7 @@ class ring_buffer{
 		}
 
 		T &operator[](int8_t idx){
-			return buffer[(idx+l)%_size];
+			return buffer[(idx+l+1)%_size];
 		}
 
 		void push_back(const T& val){
