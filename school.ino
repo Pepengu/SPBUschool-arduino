@@ -9,8 +9,10 @@ void setup(){
 	rb.push_front(42);
 
 	for(int i = 0; i < rb.size(); ++i){
-		Serial.print(rb[i], " ");
+		Serial.print(rb[i]);
+		Serial.print(" ");
 	}
+	Serial.println();
 
 	Serial.println(rb.back());
 	Serial.println(rb.pop_front());
@@ -18,3 +20,5 @@ void setup(){
 	Serial.println(rb.pop_back());
 	Serial.println(rb.size());
 }
+
+void loop(){}

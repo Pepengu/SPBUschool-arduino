@@ -14,7 +14,7 @@ class ring_buffer{
 		ring_buffer(): l(0), r(0){}
 
 		inline uint8_t size(){
-			return (l > r ? l-r : r-l);
+			return (r-l+_size-1)%_size;
 		}
 
 		T &operator[](int8_t idx){
@@ -44,13 +44,13 @@ class ring_buffer{
 			return buffer[(l+1)%_size];
 		}
 
-		T& pop_back(){
+		T pop_back(){
 			T res = back();
 			shrink_right();
 			return res;
 		}
 
-		T& pop_front(){
+		T pop_front(){
 			T res = front();
 			shrink_left();
 			return res;
