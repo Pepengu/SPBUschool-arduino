@@ -1,7 +1,7 @@
 template<typename T, uint8_t _size>
 class ring_buffer{
 	private:
-		T buffer[size];
+		T buffer[_size];
 		uint8_t l, r;
 
 		void expand_left();
@@ -59,7 +59,7 @@ class ring_buffer{
 
 
 template<typename T, uint8_t _size>
-void ring_buffer::expand_left(){
+void ring_buffer<T,_size>::expand_left(){
 	if(l == r){
 		r = (r + 1) % _size;
 	}
@@ -69,7 +69,7 @@ void ring_buffer::expand_left(){
 }
 
 template<typename T, uint8_t _size>
-void ring_buffer::expand_right(){
+void ring_buffer<T,_size>::expand_right(){
 	if(l == r){
 		if(l-- == 0){
 			l = _size-1;
@@ -79,12 +79,12 @@ void ring_buffer::expand_right(){
 }
 
 template<typename T, uint8_t _size>
-void ring_buffer::shrink_left(){
+void ring_buffer<T,_size>::shrink_left(){
 	l = (l + 1) % _size;
 }
 
 template<typename T, uint8_t _size>
-void ring_buffer::shrink_right(){
+void ring_buffer<T,_size>::shrink_right(){
 	if(r-- == 0){
 		r = _size-1;
 	}
